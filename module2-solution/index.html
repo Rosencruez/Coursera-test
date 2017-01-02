@@ -31,11 +31,9 @@
     <!-- To Buy List -->
     <div class="col-md-6" ng-controller='list1Controller as ToBuyController'>
      <h2>To Buy:</h2>
-      {{populate(ToBuyController)}}
-      {{ToBuyController.length}}
      <ul>
        <!-- ng-repeat to list all items in the array -->
-       <li ng-repeat="item in ToBuyController">Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="remove(ToBuyController, AlreadyBoughtController, $index)"><span class="glyphicon glyphicon-ok"></span> Bought</button> </li>
+       <li ng-repeat="item in ToBuyController">Buy {{item.quantity}} {{item.name}} <button class="btn btn-default" ng-click="remove($index)"><span class="glyphicon glyphicon-ok"></span> Bought</button> </li>
        <!-- <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li>
        <li>Buy 10 cookies <button class="btn btn-default"><span class="glyphicon glyphicon-ok"></span> Bought</button></li> -->
      </ul>
