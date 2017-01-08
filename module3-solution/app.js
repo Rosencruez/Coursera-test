@@ -16,6 +16,7 @@ function NarrowItDownController(MenuSearchService) {
 
     //if searchTerm is an empty string
     if (!searchTerm || searchTerm.length === 0 || !searchTerm.trim) {
+      console.log("empty");
       menu.errorMessage = "Nothing found";
     }
     else { //if searchTerm is NOT an empty string
@@ -37,6 +38,7 @@ function NarrowItDownController(MenuSearchService) {
       }
     };
     menu.removeItem = function (index) { //remove item function
+      console.log("click");
       menu.found.splice(index, 1); //splice function removes item as specified position
     };
 }
@@ -74,7 +76,7 @@ function MenuSearchService($http, ApiBasePath) { //inject constant into function
 
 function FoundItems () {
   var ddo = {
-    templateUrl: '',
+    templateUrl: 'directive.html',
     scope: {
       found: '<' //we're not changing anything
     },
