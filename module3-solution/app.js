@@ -99,6 +99,8 @@ function FoundItems () {
     templateUrl: 'foundItems.html',
     scope: {
       found: '<' //we're not changing anything
+      onRemove: '&'
+
     },
     controller: FoundItemsDirectiveController,
     controllerAs: 'foundItemsDirective',
