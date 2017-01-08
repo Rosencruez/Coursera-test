@@ -22,9 +22,11 @@
     <br />
 
     <!-- found-items should be implemented as a component -->
-    <found-items>
-      <!-- directive stuff goes here -->
-    </found-items>
+    <found-items
+    found="menu.found"
+    on-remove="menu.removeItem(indexArg)"
+    class="ng-isolate-scope"
+    ></found-items>
     <div class="error ng-binding">{{ menu.errorMessage }}</div>
   </div>
 
