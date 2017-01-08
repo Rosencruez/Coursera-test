@@ -3,8 +3,7 @@
     <li ng-repeat="category in menu.found"> <!-- loop through the categories -->
       <!-- note the empty a href -->
       <!-- list category short name on click -->
-      <b>{{ category.name }} ({{ category.short_name }}):</b> {{ category.description }} <!-- list category name -->
-      <button class="btn btn-primary" ng-click="list.onRemove({index: $index});">Don't want this one!</button>
+      <b>{{ category.name }} ({{ category.short_name }}):</b> {{ category.description }} <button class="btn btn-primary" ng-click="list.onRemove({index: $index});">Don't want this one!</button> <!-- list category name -->
     </li>
   </li>
 </ol>
