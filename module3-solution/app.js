@@ -98,7 +98,7 @@ function FoundItems () {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      found: '<' //we're not changing anything
+      found: '<', //we're not changing anything
       onRemove: '&'
     },
     controller: FoundItemsDirectiveController,
