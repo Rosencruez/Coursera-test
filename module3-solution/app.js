@@ -11,6 +11,17 @@ NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var menu = this;
 
+  //this commented out code I know prints out the menu item ID, name, and description
+
+  // var promise = MenuSearchService.getMenuCategories(); // promise calls service to get menu categories, returns promise
+  //
+  // promise.then(function (response) { // resolves the promise
+  //   menu.categories = response.data.menu_items; //json, array assigned to categories property of our menu
+  // })
+  // .catch(function (error) { // catch to handle errors
+  // console.log("Something went terribly wrong.");
+  // });
+
   menu.slim = function (searchTerm) {
     menu.found = []; //array
 
@@ -21,7 +32,7 @@ function NarrowItDownController(MenuSearchService) {
     }
     else { //if searchTerm is NOT an empty string
       var narrowSearch = MenuSearchService.getMatchedMenuItems(searchTerm); //go grab the menu items in the json
-
+      console.log("not empty?");
       narrowSearch.then (function (response) { //run through via promises
         if (response.length == 0) { //if no results found
           menu.found = []; //empty array
@@ -48,9 +59,18 @@ function MenuSearchService($http, ApiBasePath) { //inject constant into function
   var service = this; // service local variable equal to this
   var foundArray = [];
 
+  service.getMenuCategories = function () { // main method to use
+    var response = $http({ // http service
+      method: "GET", // tell http service to use a get request
+      url: (ApiBasePath + "/menu_items.json") // url to categories, string concatination
+    });
+
+    return response; //return to promise (called by controller in this case)
+  };
+
   //ApiBasePath gives the URL to be used
   service.getMatchedMenuItems = function (searchTerm) { // main method to use
-    console.log("click");
+    console.log("click button");
     var answer = $http({ // http service
       method: "GET", // tell http service to use a get request
       url: (ApiBasePath + "/menu_items.json") // url to categories, string concatination
@@ -62,7 +82,7 @@ function MenuSearchService($http, ApiBasePath) { //inject constant into function
     return answer;
   };
 
-    service.mathMenu = function (foundMenu, searchTerm) {
+    service.matchMenu = function (foundMenu, searchTerm) {
       foundArray = [];
 
       for (var a = 0; a < foundMenu.length; a++) {
@@ -76,7 +96,7 @@ function MenuSearchService($http, ApiBasePath) { //inject constant into function
 
 function FoundItems () {
   var ddo = {
-    templateUrl: 'directive.html',
+    templateUrl: 'foundItems.html',
     scope: {
       found: '<' //we're not changing anything
     },

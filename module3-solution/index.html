@@ -17,11 +17,24 @@
       <input type="text" placeholder="search term" class="form-control" ng-model="menu.searchTerm">
     </div>
     <div class="form-group narrow-button">
-      <button class="btn btn-primary" ng-click="getMatchedMenuItems(searchTerm)">Narrow It Down For Me!</button>
+      <button class="btn btn-primary" ng-click="menu.slim(menu.searchTerm);">Narrow It Down For Me!</button>
     </div>
     <br />
+
+    <!-- need to replace, but it works for now -->
+    <ul>
+      <li ng-repeat="category in menu.found"> <!-- loop through the categories -->
+        <!-- note the empty a href -->
+        <!-- list category short name on click -->
+        <b>{{ category.name }} ({{ category.short_name }}):</b> {{ category.description }} <!-- list category name -->
+      </li>
+    </ul>
+    <!-- need to replace, but it works for now -->
+
     <!-- found-items should be implemented as a component -->
-    <found-items found-items="...." on-remove="...."></found-items>
+    <found-items found-items="...." on-remove="....">
+      <!-- directive stuff goes here -->
+    </found-items>
     <div class="error ng-binding">{{ menu.errorMessage }}</div>
   </div>
 
