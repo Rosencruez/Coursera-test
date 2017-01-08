@@ -100,7 +100,6 @@ function FoundItems () {
     scope: {
       found: '<' //we're not changing anything
       onRemove: '&'
-
     },
     controller: FoundItemsDirectiveController,
     controllerAs: 'foundItemsDirective',
