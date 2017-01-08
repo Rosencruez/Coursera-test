@@ -1,9 +1,9 @@
 
 <ol>
-    <li ng-repeat="category in foundItemsDirective.found"> <!-- loop through the categories -->
+    <li ng-repeat="menu in foundItemsDirective.found"> <!-- loop through the categories -->
       <!-- note the empty a href -->
       <!-- list category short name on click -->
-      <b>{{ category.name }} ({{ category.short_name }}):</b> {{ category.description }} <button class="btn btn-primary" ng-click="foundItemsDirective.onRemove({index: $index});">Don't want this one!</button> <!-- list category name -->
+      <b>{{ menu.name }} ({{ menu.short_name }}):</b> {{ menu.description }} <button class="btn btn-primary" ng-click="foundItemsDirective.onRemove({index: $index});">Don't want this one!</button> <!-- list category name -->
     </li>
   </li>
 </ol>
