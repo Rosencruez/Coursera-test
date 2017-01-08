@@ -1,0 +1,10 @@
+
+<ol  ng-if="item.length">
+    <li ng-repeat="category in menu.found"> <!-- loop through the categories -->
+      <!-- note the empty a href -->
+      <!-- list category short name on click -->
+      <b>{{ category.name }} ({{ category.short_name }}):</b> {{ category.description }} <!-- list category name -->
+      <button class="btn btn-primary" ng-click="list.onRemove({index: $index});">Don't want this one!</button>
+    </li>
+  </li>
+</ol>
