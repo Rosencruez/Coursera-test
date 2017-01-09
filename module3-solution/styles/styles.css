@@ -50,3 +50,17 @@ input[type="text"] {
     transform: rotate(360deg);
   }
 }
+
+ol {
+  float: left;
+}
+
+li {
+  padding: 10px;
+}
+
+.error ng-binding {
+  float: left;
+  font-color: red;
+  text-transform: capitalize;
+}
