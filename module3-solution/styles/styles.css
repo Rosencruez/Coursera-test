@@ -52,15 +52,15 @@ input[type="text"] {
 }
 
 ol {
-  float: left;
+  clear: left;
 }
 
 li {
   padding: 10px;
 }
 
-.error ng-binding {
-  float: left;
+#NothingError {
+  clear: left;
   font-color: red;
   text-transform: capitalize;
 }
