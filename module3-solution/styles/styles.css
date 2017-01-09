@@ -61,6 +61,6 @@ li {
 
 #NothingError {
   clear: left;
-  font-color: red;
+  color: red;
   text-transform: capitalize;
 }
