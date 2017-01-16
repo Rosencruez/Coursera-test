@@ -2,12 +2,13 @@
 
 angular.module('Data')
 .service('MenuDataService', MenuDataService)
-.constant('APIBasePath', "https://davids-restaurant.herokuapp.com"); //reuse from the last assignment
+.constant('APIBasePath', 'https://davids-restaurant.herokuapp.com'); //reuse from the last assignment
 
 MenuDataService.$inject = ['$http', 'APIBasePath'] //need these to grab from the json
 function MenuDataService($http, APIBasePath) {
 
 var service = this;
+var catArray = [];
 
 service.getAllCategories = function () { //start of getAllCategories function
   /*
@@ -18,13 +19,13 @@ service.getAllCategories = function () { //start of getAllCategories function
     method: "GET",
     url: (APIBasePath + "/categories.json")
   }).then(function(result){
-      console.log("get categories");
+      console.log(result.data);
       return result.data;
     });
   return response;
 };
 
-service.getItemsForCategory(categoryShortName) = function () {
+service.getItemsForCategory() = function (categoryShortName) {
   /*
   this method should return a promise which is a result of using the `$http` service,
   using the following REST API endpoint: https://davids-restaurant.herokuapp.com/menu_items.json?category=,

@@ -25,7 +25,7 @@ function RoutesConfig($stateProvider, $urlRouterProvider) { //start of RoutesCon
   templateUrl: 'src/templates/categories.template.html',
   controller: 'CategoriesController as ctrl',
   resolve: {
-    categories: ['MenuDataService', function (MenuDataService) {
+    categories: ['MenuDataService', function(MenuDataService) {
       return MenuDataService.getAllCategories();
     }]
     }
