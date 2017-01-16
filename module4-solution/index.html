@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en" ng-app="MenuApp"> <!-- start of menu app -->
+
+  <head> <!-- start of head -->
+    <title>Module 4 Solution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+
+    <!-- main js files-->
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+
+    <!-- modules -->
+    <script src="src/data.module.js"></script>
+    <script src="src/menuapp.module.js"></script>
+
+    <!-- routes -->
+    <script src="src/routes.js"></script>
+
+    <!-- module artifacts -->
+    <script src="src/menudata.service.js"></script>
+    <script src="src/items.component.js"></script>
+    <script src="src/items.controller.js"></script>
+    <script src="src/categories.component.js"></script>
+    <script src="src/categories.controller.js"></script>
+
+  </head> <!-- end of head -->
+
+<h1>Welcome to our Restaurant!</h1>
+
+<div class="view">
+  <a ui-sref="home" ui-sref-active="activeTab">Home</a>
+  <a ui-sref="categories" ui-sref-active="activeTab">Categories</a>  
+</div>
+<ui-view></ui-view>
+
+</html> <!-- end of MenuApp -->
