@@ -1,46 +1,45 @@
-(function () {
+(function() {
+'use strict';
 
-angular.module('MenuApp')
-.config(RoutesConfig);
+	angular.module('MenuApp')
+	.config(MenuConfig);
 
-RoutesConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
-function RoutesConfig($stateProvider, $urlRouterProvider) { //start of RoutesConfig
-//configure routes and view states
+	MenuConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
+	function MenuConfig($stateProvider, $urlRouterProvider) {
 
-  // Redirect to home page if no other URL matches
-  $urlRouterProvider.otherwise('/');
+	  // Redirect to tab 1 if no other URL matches
+	  $urlRouterProvider.otherwise('/');
 
-  // *** Set up UI states ***
-  $stateProvider
 
-  // Home page
-  .state('home', {
-  url: '/',
-  templateUrl: 'src/templates/home.template.html'
-  })
+	  // Set up UI states
+	  $stateProvider
+		.state('home', {
+		  url: '/',
+		  templateUrl: 'src/home.template.html'
+		})
 
-  // categories page
-  .state('categories', {
-  url: '/categories',
-  templateUrl: 'src/templates/categories.template.html',
-  controller: 'CategoriesController as ctrl',
-  resolve: {
-    categories: ['MenuDataService', function(MenuDataService) {
-      return MenuDataService.getAllCategories();
-    }]
-    }
-  })
+		.state('categories', {
+		  url: '/categories',
+		  templateUrl: 'src/categories.template.html',
+		  controller: 'CategoriesController as categoriesCtrl',
+		  resolve: {
+			  categories: ['MenuDataService', function(MenuDataService){
+				  return MenuDataService.getAllCategories();
+			  }]
+		  }
+		})
 
-  .state('items', {
-    url: '/items/{shortName}',
-    templateUrl: 'src/templates/items.template.html',
-    controller: 'ItemsController as ctrl',
-    resolve: {
-      items: ['$stateParams', 'MenuDataService', function ($stateParams, MenuDataService) {
-        return MenuDataService.getItemsForCategory($stateParams.shortName);
-      }]
-    }
-  })
-
-}; //end of RoutesConfig
+		.state('itemList', {
+		  url: '/items/{menuCategory}',
+		  templateUrl: 'src/items.template.html',
+		  controller: 'ItemsController as itemsCtrl',
+		  resolve : {
+			  dishes: ['$stateParams','MenuDataService',
+				function($stateParams, MenuDataService) {
+					return MenuDataService.getItemsForCategory($stateParams.menuCategory);
+				}
+			  ]
+		  }
+		});
+	}
 })();

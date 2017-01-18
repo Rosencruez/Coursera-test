@@ -1,48 +1,34 @@
 (function () {
-
+'use strict';
 angular.module('Data')
-.service('MenuDataService', MenuDataService)
-.constant('APIBasePath', 'https://davids-restaurant.herokuapp.com'); //reuse from the last assignment
+.service('MenuDataService',MenuDataService)
+.constant('ApiBasePath','https://davids-restaurant.herokuapp.com');
 
-MenuDataService.$inject = ['$http', 'APIBasePath'] //need these to grab from the json
-function MenuDataService($http, APIBasePath) {
+function MenuDataService($http, ApiBasePath) {
+  var service = this;
 
-var service = this;
-var catArray = [];
-
-service.getAllCategories = function () { //start of getAllCategories function
-  /*
-  this method should return a promise which is a result of using the `$http` service,
-  using the following REST API endpoint: https://davids-restaurant.herokuapp.com/categories.json
-  */
-  var response = $http({
-    method: "GET",
-    url: (APIBasePath + "/categories.json")
-  }).then(function(result){
-      console.log(result.data);
+  service.getAllCategories  = function() {
+    var response = $http({
+      method:'GET',
+      url: (ApiBasePath + "/categories.json")
+    }).then(function(result){
       return result.data;
     });
-  return response;
-};
 
-service.getItemsForCategory() = function (categoryShortName) {
-  /*
-  this method should return a promise which is a result of using the `$http` service,
-  using the following REST API endpoint: https://davids-restaurant.herokuapp.com/menu_items.json?category=,
-  where, before the call to the server, your code should append whatever `categoryShortName` value was
-  passed in as an argument into the `getItemsForCategory` method.
-  */
-  var response = $http({
-    method: "GET",
-    url: (APIBasePath + "/menu_items.json"),
-    params: {
-      category: categoryShortName
-    }
-  }).then(function(result){
-    console.log("get items");
+    return response;
+  };
+
+  service.getItemsForCategory = function(categoryShortName) {
+	 var response = $http({
+      method:'GET',
+      url: (ApiBasePath + "/menu_items.json?category=" + categoryShortName)
+    }).then(function(result){
       return result.data.menu_items;
     });
-  return response;
-  };
+
+    return response;
+  }
+
 }
-})(); //end of function
+
+})();

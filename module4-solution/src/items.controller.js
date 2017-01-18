@@ -1,12 +1,13 @@
 (function () {
-
+'use strict';
 angular.module('Data')
-.controller('ItemsController', ItemsController);
+.controller('ItemsController',ItemsController);
 
-ItemsController.$inject = ['MenuDataService', 'items'];
-function ItemsController(items) {
-  var ctrl = this;
-  ctrl.items = items.data;
+ItemsController.$inject = ['dishes'];
+
+function ItemsController(dishes) {
+	var itemsCtrl = this;
+	itemsCtrl.dishes = dishes;
 }
 
 })();
