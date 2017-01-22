@@ -1,0 +1,79 @@
+<fieldset>
+  <legend>Registration</legend>
+  <form name='regForm' novalidate> <!-- form -->
+
+    <!-- When the user clicks on the `Sign Up` button, they should be taken to a view that lets them "sign up" for
+    the newsletter (that will never come :-) ) of the restaurant. The sign up form should ask for the following information:
+    first name, last name, email address, and phone number.
+    It should also ask the user to specify the menu number that's their favorite dish.
+    (The menu number is the `short_name` attribute of each menu item). -->
+
+    <!-- First Name -->
+    <input type="text" name="firstname" placeholder="First Name"
+      ng-model="reg.user.firstname"
+      required
+      minlength="4">
+      {{ reg.user.firstname }}
+      <span
+        ng-if="(regForm.firstname.$error.minlength || regForm.firstname.$error.required) && regForm.firstname.$touched">
+        Username must be at least 4 characters long
+      </span>
+      <!-- <span ng-if="regForm.firstname.$error.maxlength && regForm.firstname.$touched">
+        Username must not be longer than 10 characters
+      </span> -->
+      <br>
+
+      <!-- Last Name -->
+      <input type="text" name="lastname" placeholder="Last Name"
+        ng-model="reg.user.lastname"
+        required
+        minlength="4">
+        <!-- {{ reg.user.lastname }} -->
+        <span
+          ng-if="(regForm.lastname.$error.minlength || regForm.lastname.$error.required) && regForm.lastname.$touched">
+          Username must be at least 4 characters long
+        </span>
+        <!-- <span ng-if="regForm.lastname.$error.maxlength && regForm.lastname.$touched">
+          Username must not be longer than 10 characters
+        </span> -->
+        <br>
+
+    <!-- required field -->
+    <!-- if this input field is invalid AND the user touched the textbox -->
+    <input type="email" name="email" placeholder="Email"
+      ng-model="reg.user.email"
+      required>
+      <span ng-if="regForm.email.$invalid && regForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br>
+
+    <!-- not a required field -->
+    <!-- pattern based, 3 digits-3 digits-4 digits -->
+    <!-- if we get an invalid error AND the user touched the textbox -->
+    <input type="text" name="phone" placeholder="Phone ###-###-####"
+      ng-model="reg.user.phone"
+      pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="regForm.phone.$invalid && regForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+      <br>
+
+    <!-- disabled button if there is any invalidation in the form -->
+    <!-- if enabled, call the submit method, set completed's flag to true -->
+    <button
+      class="submit"
+      ng-disabled="regForm.$invalid"
+      ng-click="reg.submit()">Submit</button>
+
+      <div style="margin-top: 10px;">
+        Form valid? {{ regForm.$valid }}
+      </div>
+  </form>
+</fieldset>
+
+<div id="info" ng-if="reg.completed">
+  Name: {{ reg.user.firstname}} {{ reg.user.lastname}} <br>
+  Email: {{ reg.user.email}} <br>
+  Phone: {{ reg.user.phone }}
+</div>

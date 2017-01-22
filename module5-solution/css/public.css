@@ -165,7 +165,20 @@ h3.menu-item-title {
   }
 }
 
+fieldset { /* registration form */
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+legend { /* registration form header */
+  color: #FFFFFF;
+}
+
+input, .submit {
+  color: #000000;
+}
 /********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
 @media (max-width: 479px) {
   /* Home page */
