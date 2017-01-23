@@ -42,10 +42,12 @@ function NarrowItDownController(MenuSearchService) {
         else { //if results are found
           menu.found = response; //populate array with matches
           menu.errorMessage = ""; //empty error message
+          console.log(menu.found);
         }
         }).catch (function (error) { //unsuccessful
           console.log("UH OH");
         });
+            console.log(narrowSearch);
       }
     };
     menu.removeItem = function (index) { //remove item function

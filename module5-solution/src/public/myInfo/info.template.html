@@ -1,0 +1,16 @@
+<div ng-if="!infoCtrl.showInfo"> <!-- if registration not completed -->
+  Not Signed Up Yet. <a ui-sref="public.signup">Sign up Now!<a/>
+</div>
+<div ng-if="infoCtrl.showInfo"> <!-- if registration completed -->
+  Name: {{ infoCtrl.info.firstname}} {{ infoCtrl.info.lastname}} <br>
+  Email: {{ infoCtrl.info.email}} <br>
+  Phone: {{ infoCtrl.info.phone }} <br>
+  Favourite Dish: <br>
+  {{ infoCtrl.info.title }} <br>
+  {{ infoCtrl.info.description }} <br>
+  <img class="img-responsive"
+  width="250"
+  height="150"
+  ng-src="{{infoCtrl.basePath}}/images/{{infoCtrl.info.favourite}}.jpg"
+  alt="{{infoCtrl.info.title}}">
+</div>
